@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Highcharts from 'highcharts';
+import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
 
-const LineChart = () => {
+const StockChart = () => {
   const [hoverData, setHoverData] = useState(null);
   const [options, setOptions] = useState({
     title: {
-      text: 'Line Chart',
+      text: 'Stock Chart',
     },
     xAxis: {
       categories: ['A', 'B', 'C'],
@@ -22,8 +22,12 @@ const LineChart = () => {
         },
       },
     },
+    rangeSelector: {
+      selected: 1,
+    },
     series: [
       {
+        name: 'Stock Price',
         data: [1, 34, 54],
       },
     ],
@@ -34,6 +38,7 @@ const LineChart = () => {
       ...options,
       series: [
         {
+          name: 'Stock Price',
           data: [
             Math.ceil(Math.random() * 15 + 1),
             Math.ceil(Math.random() * 35 + 1),
@@ -43,14 +48,18 @@ const LineChart = () => {
       ],
     });
   };
-  
+
   return (
     <>
-      <HighchartsReact highcharts={Highcharts} options={options} />
+      <HighchartsReact
+        highcharts={Highcharts}
+        options={options}
+        constructorType={'stockChart'}
+      />
       <h3>Hovering over {hoverData}</h3>
       <button onClick={updateSeries}>Update Series</button>
     </>
   );
 };
 
-export default LineChart;
+export default StockChart;

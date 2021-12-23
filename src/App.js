@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import BasicChart from './components/BasicChart';
-import LineChart from './components/LineChart';
+import StockChart from './components/StockChart';
 
 const App = () => {
   return (
     <Fragment>
       <BasicChart />
-      <LineChart />
+      <StockChart />
     </Fragment>
   );
 };
